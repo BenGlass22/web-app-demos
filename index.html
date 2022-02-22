@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+ <head>
+  <meta charset="utf-8">
+   <title>Ben's Web App</title>
+   <style>
+
+
+     div {
+        font-size: 50px;
+        font-family: sans-serif;
+         text-align: center;
+         user-select: none;
+         cursor: pointer;
+         text-transform: uppercase;
+       }
+
+       body{
+         margin: 0;
+         padding: 0;
+         min-height: 100vh;
+       }
+
+  </style>
+ </head>
+ <body>
+
+
+
+ <script>
+
+   let mousedown = false
+
+   function createNewButton (e) {
+     const b = document.createElement('button')
+     b.textContent = 'click me'
+     b.addEventListener('click', () => {
+       const r = Math.floor(Math.random() * 255)
+        const g = Math.floor(Math.random() * 255)
+         const b = Math.floor(Math.random() * 255)
+       document.body.style.background = `rgb(${r},${g},${b})`
+     })
+     b.style.position = 'absolute'
+     b.style.top = e.clientY + 'px'
+     b.style.left = e.clientX + 'px'
+     document.body.appendChild(b)
+
+
+   }
+
+   document.addEventListener('mousedown', (e) => {
+     mousedown = true
+   })
+
+   document.addEventListener('mouseup', (e) => {
+     mousedown = false
+   })
+
+   document.addEventListener('mousemove', (e) => {
+     if (mousedown) createNewButton(e)
+   })
+
+      </script>
+    </body>
+  </html>
